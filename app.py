@@ -30,6 +30,7 @@ with st.echo():
 
     st.title('Поиск квартир')
     st.write('Информацию о проекте вы сможете увидеть ниже, когда загрузится карта, а здесь вы можете выставить параметры квартиры')
+    st.write('Помимо кода, который здесь приведёт, ещё есть код по ссылкам в информации о проекте: там код выполняет функции скрапинга, описания методов машинного обучения, подготовки данных с pandas')
 
     lat_sl = st.slider(label="Ширина", min_value=MIN_LAT, max_value=MAX_LAT, value=(MIN_LAT + MAX_LAT) / 2)
     lon_sl = st.slider(label="Долгота", min_value=MIN_LON, max_value=MAX_LON, value=(MIN_LON + MAX_LON) / 2)
