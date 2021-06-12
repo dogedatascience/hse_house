@@ -38,7 +38,7 @@ with st.echo():
 
     data = pd.read_csv('moscow.csv')
 
-    rooms = st.slider(label="Кол-во комнат", min_value=int(data['rooms'].min()), max_value=int(data['rooms'].max()), value=int(data['rooms'].min()), step=1)
+    rooms = st.slider(label="Кол-во комнат", min_value=1, max_value=3, value=1, step=1)
 
     data = data.loc[(data['lat'] - lat_sl <= r) & (-r <= data['lat'] - lat_sl) & (data['lon'] - lon_sl <= r) & (-r <= data['lon'] - lon_sl) & (data['rooms'] == rooms)]
     data = data.loc[(data['rooms'] == rooms)]
