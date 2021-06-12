@@ -1,5 +1,4 @@
 import streamlit as st
-import pyproj
 import wheel
 import pandas as pd
 import json
