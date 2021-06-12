@@ -37,12 +37,12 @@ with st.echo():
 
     data = pd.read_csv('moscow.csv')
 
-    rooms = st.slider(label="Кол-во комнат", min_value=int(data['rooms'].min()), max_value=int(data['rooms'].max()), value=1, step=1)
+    rooms = st.slider(label="Кол-во комнат", min_value=int(data['rooms'].min()), max_value=int(data['rooms'].max()), value=int(data['rooms'].min()), step=1)
 
     data = data.loc[(data['lat'] - lat_sl <= r) & (-r <= data['lat'] - lat_sl) & (data['lon'] - lon_sl <= r) & (-r <= data['lon'] - lon_sl) & (data['rooms'] == rooms)]
     data = data.loc[(data['rooms'] == rooms)]
 
-    price = st.slider(label="Цена", min_value=int(data['price'].min()), max_value=int(data['price'].max()), value=[int(data['price'].min()), int(data['price'].max() + data['price'].min()) // 9])
+    price = st.slider(label="Цена", min_value=int(data['price'].min()), max_value=int(data['price'].max()), value=[int(data['price'].min()), max(int(data['price'].max() + data['price'].min()) // 9, int(data['price'].min()))])
 
     data = data.loc[(price[0] < data['price']) & (data['price'] < price[1])]
 
@@ -67,7 +67,7 @@ with st.echo():
             data=map_data,
             get_position='[lon, lat]',
             get_color='[255, 0, 0, 160]',
-            get_radius=200,
+            get_radius=40,
         )]
 
     with open('weights.txt') as r:
